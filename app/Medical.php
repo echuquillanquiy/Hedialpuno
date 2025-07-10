@@ -45,7 +45,8 @@ class Medical extends Model
         'fua_observacion',
         'so2',
         'fio',
-        'temp'
+        'temp',
+		'user_id2',
 
     ];
 
@@ -56,7 +57,12 @@ class Medical extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+	
+	public function user2()
+    {
+        return $this->belongsTo(User::class, 'user_id2');
     }
 
     public function scopePatient($query, $patient)

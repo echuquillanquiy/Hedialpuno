@@ -13,7 +13,7 @@
           <tr>
 
             <td colspan="6" style="font-size: 0.6rem; text-align: right;"><strong>Apellidos y Nombres: </strong></td>
-            <td width="586px" style="border-bottom: solid 1px; font-size: 0.6rem; text-transform:uppercase;">{{ $order->patient->name }}</td>
+            <td width="586px" style="border-bottom: solid 1px; font-size: 0.6rem; text-transform:uppercase;">{{ $order->patient->surname }} {{ $order->patient->lastname }} {{ $order->patient->firstname }} {{ $order->patient->othername }}</td>
 
           </tr>
         </table>
@@ -165,22 +165,22 @@
             </tr>
 
             <tr>
-                @if($order->medical->user_id)
-                    <td colspan="4" style="text-align: center">
+                @if(!$order->medical->user_id)
+                    <p>AQUI VA SELLO DEL MEDICO</p>
+                @else
+					<td colspan="4" style="text-align: center">
                         <img src="{{ asset($order->medical->user->image) }}" width="140" height="65" alt="">
                     </td>
-                @else
-                    <p>AQUI VA SELLO DEL MEDICO</p>
                 @endif
 
 
 
-                    @if($order->medical->user_id)
-                        <td colspan="4" style="text-align: center">
-                            <img src="{{ asset($order->medical->user->image) }}" width="140" height="65" alt="">
-                        </td>
+                    @if(!$order->medical->user_id && !$order->medical->user_id2)						
+						<p>AQUI VA SELLO DEL MEDICO</p>
                     @else
-                        <p>AQUI VA SELLO DEL MEDICO</p>
+						<td colspan="4" style="text-align: center">
+                            <img src="{{ asset($order->medical->user2->image) }}" width="140" height="65" alt="">
+                        </td>
                     @endif
             </tr>
 
@@ -447,12 +447,12 @@
                 @endif
 
 
-                    @if($order->nurse->user_id)
-                        <td>
-                            <img src="{{ asset($order->nurse->user->image) }}" width="145" height="65" alt="">
+                    @if($order->nurse->user_id2)						
+						<td>
+                            <img src="{{ asset($order->nurse->user2->image) }}" width="145" height="65" alt="">
                         </td>
                     @else
-                        <td>aqui va firma del licenciado</td>
+						<td>aqui va firma del licenciado</td>
                     @endif
             </tr>
 

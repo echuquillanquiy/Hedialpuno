@@ -22,7 +22,18 @@
 
         <tr>
             <td></td>
-            <td style="border: #0a0c0d solid 1px; font-size: 0.9rem; font-weight: bold">00021247-24-000{{ $order->n_fua }}</td>
+			@if ($order->n_fua < 10)
+				<td style="border: #0a0c0d solid 1px; font-size: 0.9rem; font-weight: bold">00021247-25-0000000{{ $order->n_fua }}</td>
+			@elseif ($order->n_fua >= 10 || $order->n_fua <= 99)
+				<td style="border: #0a0c0d solid 1px; font-size: 0.9rem; font-weight: bold">00021247-25-000{{ $order->n_fua }}</td>
+			@elseif ($order->n_fua >= 100 || $order->n_fua <= 999)
+				<td style="border: #0a0c0d solid 1px; font-size: 0.9rem; font-weight: bold">00021247-25-000{{ $order->n_fua }}</td>
+			@elseif ($order->n_fua > 999 || $order->n_fua < 10000)
+				<td style="border: #0a0c0d solid 1px; font-size: 0.9rem; font-weight: bold">00021247-25-000{{ $order->n_fua }}</td>
+			@else
+				<td style="border: #0a0c0d solid 1px; font-size: 0.9rem; font-weight: bold">00021247-25-000{{ $order->n_fua }}</td>
+			@endif
+				
             <td></td>
         </tr>
     </table>

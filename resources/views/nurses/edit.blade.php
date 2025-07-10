@@ -424,7 +424,7 @@
 
                 <div class="row text-center">
 
-                    <div class="form-group col-sm-12 col-lg-9">
+                    <div class="form-group col-sm-12 col-lg-6">
                         <label for="end_observation">Observación Final</label>
                         <textarea class="form-control" id="" name="end_observation" rows="3" value="">{{ old('end_observation', $nurse->end_observation) }}</textarea>
                     </div>
@@ -439,6 +439,17 @@
 
                         </select>
                     </div>
+					
+					<div class="form-group col-sm-12 col-lg-3">
+						<label for="user_id2">USUARIO QUE FINALIZA HD</label>
+					<select class="form-control selectpicker" name="user_id2" data-live-search="true" data-style="btn-info">
+						<option value="{{ !$nurse->user_id2 ? auth()->user()->id : $nurse->user_id2 }}">{{ !$nurse->user_id2 ? auth()->user()->name : $nurse->user2->name }}</option>
+						@foreach($users as $user)
+							<option value="{{ $user->id }}">{{ $user->name }}</option>
+						@endforeach
+
+						</select>
+					</div>
 
                 </div>
             </div>

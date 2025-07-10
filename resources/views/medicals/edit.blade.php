@@ -289,12 +289,12 @@
 
       </div>-->
         @if($medical->end_evaluation == null)
-            <div class="form-group col-sm-12 col-lg-4">
+            <div class="form-group col-sm-12 col-lg-3">
                 <label for="end_evaluation">Evaluación Final</label>
                 <textarea class="form-control" id="" name="end_evaluation" rows="2">{{ old('end_evaluation' ,'SIN COMPLICACIONES') }}</textarea>
             </div>
         @else
-            <div class="form-group col-sm-12 col-lg-4">
+            <div class="form-group col-sm-12 col-lg-3">
                 <label for="end_evaluation">Evaluación Final</label>
                 <textarea class="form-control" id="" name="end_evaluation" rows="2">{{ old('end_evaluation' ,$medical->end_evaluation) }}</textarea>
             </div>
@@ -306,8 +306,8 @@
             <input type="time" name="end_hour" class="form-control" value="{{ old('end_hour', $medical->end_hour) }}">
         </div>
 
-        <div class="form-group col-sm-12 col-lg-4">
-            <label for="fua_observacion">SI EL PACIENTE NO PUEDE FIRMAR SELECCIONE UNA OPCION</label>
+        <div class="form-group col-sm-12 col-lg-3">
+            <label for="fua_observacion">SELECCIONE UNA OPCION</label>
             <select name="fua_observacion" id="fua_observacion" class="form-control selectpicker" data-live-search="true" data-style="btn-info">
                 <option value="{{ !$medical->fua_observacion ? '' : $medical->fua_observacion }}" disabled selected>{{ !$medical->fua_observacion ? '[SELECCIONE UNA OPCION]' : $medical->fua_observacion }}</option>
                 <option value="PACIENTE PRESENTA MOVIMIENTOS INVOLUNTARIOS EN MIEMBROS SUPERIORES, IMPOSIBILITADO PARA FIRMAR">PACIENTE PRESENTA MOVIMIENTOS INVOLUNTARIOS EN MIEMBROS SUPERIORES, IMPOSIBILITADO PARA FIRMAR</option>
@@ -324,9 +324,20 @@
         </div>
 
         <div class="form-group col-sm-12 col-lg-2">
-            <label for="user_id">USUARIO DE LA ATENCION</label>
+            <label for="user_id">USUARIO QUE INICIA HD</label>
             <select class="form-control selectpicker" name="user_id" data-live-search="true" data-style="btn-info">
                 <option value="{{ !$medical->user_id ? auth()->user()->id : $medical->user_id }}">{{ !$medical->user_id ? auth()->user()->name : $medical->user->name }}</option>
+                @foreach($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                @endforeach
+
+            </select>
+        </div>
+		
+		<div class="form-group col-sm-12 col-lg-2">
+            <label for="user_id2">USUARIO QUE FINALIZA HD</label>
+            <select class="form-control selectpicker" name="user_id2" data-live-search="true" data-style="btn-info">
+                <option value="{{ !$medical->user_id2 ? auth()->user()->id : $medical->user_id2 }}">{{ !$medical->user_id2 ? auth()->user()->name : $medical->user2->name }}</option>
                 @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach

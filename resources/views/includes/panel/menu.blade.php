@@ -54,11 +54,11 @@
           </ul>
         </a>
 
-        <a class="nav-link" href="/consults">
+        <!-- <a class="nav-link" href="/consults">
           <ul class="text-gray">
               <i class="ni ni-bold-right text-Secondary"></i> Consulta externa
           </ul>
-        </a>
+        </a>-->
 
           <a class="nav-link" href="/corrections">
               <ul class="text-gray">

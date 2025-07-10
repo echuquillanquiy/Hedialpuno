@@ -128,7 +128,8 @@ class Nurse extends Model
       'ptm8',
       'sol_hemodev8',
       'obs8',
-      'user_id'
+      'user_id',
+	  'user_id2'
 ];
 
 
@@ -140,6 +141,11 @@ class Nurse extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+	
+	public function user2()
+    {
+        return $this->belongsTo(User::class, 'user_id2');
     }
 
     public function scopePatient($query, $patient)
