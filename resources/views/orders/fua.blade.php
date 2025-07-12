@@ -23,7 +23,7 @@
         <tr>
             <td></td>
             <td style="border: #0a0c0d solid 1px; font-size: 0.9rem; font-weight: bold">
-                00021247-25-{{ str_pad($order->n_fua, 8, '0', STR_PAD_LEFT) }}
+                00035102-25-{{ str_pad($order->n_fua, 8, '0', STR_PAD_LEFT) }}
             </td>
             <td></td>
 
